@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D9A33385-F7D0-441B-9EC6-B597EA05BA38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plant", "src\Plant\Plant.csproj", "{A8B8841E-522F-4C91-BDC1-69E02E1E69CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8EF0707-F2CD-4D67-AE94-F145268EDA0E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		global.json = global.json
+		LICENSE = LICENSE
+		NuGet.config = NuGet.config
+		package-icon.png = package-icon.png
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8B8841E-522F-4C91-BDC1-69E02E1E69CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B8841E-522F-4C91-BDC1-69E02E1E69CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B8841E-522F-4C91-BDC1-69E02E1E69CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B8841E-522F-4C91-BDC1-69E02E1E69CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A8B8841E-522F-4C91-BDC1-69E02E1E69CA} = {D9A33385-F7D0-441B-9EC6-B597EA05BA38}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B608CE40-7432-4E35-8802-1D4066145035}
+	EndGlobalSection
+EndGlobal
