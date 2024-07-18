@@ -7,25 +7,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
+using Plant.Abstractions;
 
-namespace Plant.Exceptions;
+namespace Plant;
 
 /// <summary>
 /// The `DefaultProblemDetailsFactory` is a concrete implementation of the `ProblemDetailsFactory` abstract class.
 /// It provides methods to create instances of `ProblemDetails` and `ValidationProblemDetails` with default settings.
 /// This class uses the provided `ApiBehaviorOptions` for client error mapping and an optional custom configuration action to further customize the problem details.
 /// </summary>
-public sealed class DefaultProblemDetailsFactory : ProblemDetailsFactory
+public sealed class PlantProblemDetailsFactory : ProblemDetailsFactory
 {
     private readonly ApiBehaviorOptions _options;
     private readonly Action<ProblemDetailsContext>? _configure;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DefaultProblemDetailsFactory"/> class.
+    /// Initializes a new instance of the <see cref="PlantProblemDetailsFactory"/> class.
     /// </summary>
     /// <param name="options">The options for API behavior.</param>
     /// <param name="problemDetailsOptions">The options for customizing problem details.</param>
-    public DefaultProblemDetailsFactory(
+    public PlantProblemDetailsFactory(
         IOptions<ApiBehaviorOptions> options,
         IOptions<ProblemDetailsOptions>? problemDetailsOptions = null)
     {

@@ -1,25 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.Logging;
+using Plant.Abstractions;
+using Plant.Exceptions;
 
-namespace Plant.Exceptions;
+namespace Plant;
 
-public class BaseExceptionFilterAttribute : ExceptionFilterAttribute
+public class PlantExceptionFilterAttribute : ExceptionFilterAttribute
 {
     private readonly ProblemDetailsFactory _problemDetailsFactory;
+    private readonly ILogger<PlantExceptionFilterAttribute> _logger;
 
-    public BaseExceptionFilterAttribute(ProblemDetailsFactory problemDetailsFactory)
+    public PlantExceptionFilterAttribute(
+        ProblemDetailsFactory problemDetailsFactory,
+        ILogger<PlantExceptionFilterAttribute> logger)
     {
         _problemDetailsFactory = problemDetailsFactory;
+        _logger = logger;
     }
 
     public override void OnException(ExceptionContext context)
     {
         ProblemDetails problemDetails;
 
-        // TODO: log exception
+        _logger.LogError(context.Exception.Message);
 
-        if (context.Exception is BaseException exception)
+        if (context.Exception is PlantException exception)
         {
             context.HttpContext.Items[Constants.Errors] = new Dictionary<string, string[]>
             {

@@ -1,4 +1,4 @@
-﻿namespace Plant;
+﻿namespace Plant.Abstractions;
 
 public static class Constants
 {
