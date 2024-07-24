@@ -1,8 +1,10 @@
+using Plant.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Host.UsePlantSerilog();
+builder.Host.UseSerilogHost();
 
 builder.Services.AddPlant(plant =>
 {
@@ -10,8 +12,17 @@ builder.Services.AddPlant(plant =>
         .AddMvc()
         .AddApiExplorer();
 
-    plant.AddPlantSwagger();
+    plant.AddSwagger()
+        .AddBearerSecurityDefinition()
+        .AddVersionedDocs();
+
+    plant.AddSecurity();
 });
+
+builder.Services.AddSingleton<StandardExceptionFilterAttribute>();
+builder.Services.AddProblemDetails(ProblemDetailsHelper.ConfigureProblemDetailsOptions);
+
+builder.Services.AddAuthentication();
 
 var app = builder.Build();
 
@@ -20,8 +31,12 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-app.UsePlantSwagger();
+app.UseSwagger();
+app.UseVersionedSwaggerUI();
 app.UsePlantSerilogRequestLogging();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseRouting();
 app.MapControllers();

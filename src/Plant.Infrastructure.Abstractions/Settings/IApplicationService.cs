@@ -1,4 +1,4 @@
-﻿namespace Plant.Abstractions;
+﻿namespace Plant.Settings;
 
 /// <summary>
 /// Provides services to manage the application settings.

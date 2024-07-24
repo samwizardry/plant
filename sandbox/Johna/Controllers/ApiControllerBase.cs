@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Plant;
+using Plant.AspNetCore;
 
 namespace Johna.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
-[ServiceFilter(typeof(PlantExceptionFilterAttribute))]
+[ServiceFilter(typeof(StandardExceptionFilterAttribute))]
 public class ApiControllerBase : PlantControllerBase
 {
 }

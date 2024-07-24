@@ -3,12 +3,11 @@
   <PropertyGroup>
     <RootNamespace>Plant</RootNamespace>
     <AssemblyName>Plant</AssemblyName>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Product>Plant</Product>
     <Description>Development tools for aspnetcore applications</Description>
     <PackageReleaseNotes>First release of the package</PackageReleaseNotes>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageIcon>package-icon.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,18 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Plant.Abstractions\Plant.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\package-icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Plant.Abstractions\Plant.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <RootNamespace>Plant.Versioning</RootNamespace>
+    <AssemblyName>Plant.Versioning</AssemblyName>
+    <Product>Plant</Product>
+    <Description>Development tools for aspnetcore applications</Description>
+    <PackageReleaseNotes>First release of the package</PackageReleaseNotes>
+    <PackageIcon>package-icon.png</PackageIcon>
+  </PropertyGroup>
+
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
@@ -10,6 +19,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Plant.Abstractions\Plant.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\package-icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

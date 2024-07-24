@@ -2,7 +2,7 @@
 
 namespace Plant.Exceptions;
 
-public class PlantException : Exception
+public class StandardException : Exception
 {
     public int StatusCode { get; init; } = StatusCodes.Status500InternalServerError;
 
@@ -10,7 +10,7 @@ public class PlantException : Exception
 
     public string? DetailMessage { get; init; }
 
-    public PlantException(
+    public StandardException(
         int statusCode,
         string code,
         string? message,
@@ -23,4 +23,3 @@ public class PlantException : Exception
         DetailMessage = detailMessage;
     }
 }
-

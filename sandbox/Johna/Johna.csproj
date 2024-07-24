@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Plant\Plant.csproj" />
+    <ProjectReference Include="..\..\src\Plant.AspNetCore\Plant.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\src\Plant.Infrastructure\Plant.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\Plant.Versioning\Plant.Versioning.csproj"></ProjectReference>
     <ProjectReference Include="..\..\src\Plant.Logging\Plant.Logging.csproj"></ProjectReference>
     <ProjectReference Include="..\..\src\Plant.Documenting\Plant.Documenting.csproj"></ProjectReference>

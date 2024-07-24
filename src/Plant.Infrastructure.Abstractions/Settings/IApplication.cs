@@ -1,4 +1,4 @@
-﻿namespace Plant.Abstractions;
+﻿namespace Plant.Settings;
 
 public interface IApplication
 {

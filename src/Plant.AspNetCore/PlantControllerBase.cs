@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Plant.Errors;
 
-namespace Plant;
+namespace Plant.AspNetCore;
 
 public abstract class PlantControllerBase : ControllerBase
 {

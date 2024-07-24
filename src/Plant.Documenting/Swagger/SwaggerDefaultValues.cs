@@ -3,9 +3,9 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Plant.Documenting;
+namespace Plant.Swagger;
 
-public class SwaggerDefaultValues : IOperationFilter
+internal class SwaggerDefaultValues : IOperationFilter
 {
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {

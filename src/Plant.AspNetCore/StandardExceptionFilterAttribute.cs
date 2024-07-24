@@ -5,16 +5,16 @@ using Microsoft.Extensions.Logging;
 using Plant.Abstractions;
 using Plant.Exceptions;
 
-namespace Plant;
+namespace Plant.AspNetCore;
 
-public class PlantExceptionFilterAttribute : ExceptionFilterAttribute
+public class StandardExceptionFilterAttribute : ExceptionFilterAttribute
 {
     private readonly ProblemDetailsFactory _problemDetailsFactory;
-    private readonly ILogger<PlantExceptionFilterAttribute> _logger;
+    private readonly ILogger<StandardExceptionFilterAttribute> _logger;
 
-    public PlantExceptionFilterAttribute(
+    public StandardExceptionFilterAttribute(
         ProblemDetailsFactory problemDetailsFactory,
-        ILogger<PlantExceptionFilterAttribute> logger)
+        ILogger<StandardExceptionFilterAttribute> logger)
     {
         _problemDetailsFactory = problemDetailsFactory;
         _logger = logger;
@@ -24,31 +24,27 @@ public class PlantExceptionFilterAttribute : ExceptionFilterAttribute
     {
         ProblemDetails problemDetails;
 
-        _logger.LogError(context.Exception.Message);
-
-        if (context.Exception is PlantException exception)
+        if (context.Exception is StandardException exception)
         {
-            context.HttpContext.Items[Constants.Errors] = new Dictionary<string, string[]>
+            _logger.LogError(context.Exception, PlantConstants.Errors.StandardExceptionOccurred);
+
+            context.HttpContext.Items[PlantConstants.Errors.ProblemDetailsErrors] = new Dictionary<string, string[]>
             {
-                { exception.Code, new string[] { exception.DetailMessage ?? exception.Message } }
+                { exception.Code, new string[] { exception.DetailMessage ?? PlantConstants.Errors.DetailMessage } }
             };
 
             problemDetails = _problemDetailsFactory.CreateProblemDetails(
                 context.HttpContext,
                 statusCode: exception.StatusCode,
-                detail: exception.DetailMessage ?? exception.Message);
+                detail: exception.DetailMessage ?? PlantConstants.Errors.DetailMessage);
         }
         else
         {
-            context.HttpContext.Items[Constants.Errors] = new Dictionary<string, string?[]>
-            {
-                { context.Exception.GetType().ToString(), new string[] { context.Exception.Message } }
-            };
+            _logger.LogCritical(context.Exception, PlantConstants.Errors.ExceptionOccurred);
 
             problemDetails = _problemDetailsFactory.CreateProblemDetails(
                 context.HttpContext,
-                statusCode: 500,
-                detail: context.Exception.Message);
+                statusCode: 500);
         }
 
         context.Result = new ObjectResult(problemDetails);

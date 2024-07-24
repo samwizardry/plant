@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Serilog;
 
-namespace Plant.Logging;
+namespace Plant.Serilog;
 
 public static partial class LogHelper
 {
@@ -19,4 +19,3 @@ public static partial class LogHelper
         }
     }
 }
-

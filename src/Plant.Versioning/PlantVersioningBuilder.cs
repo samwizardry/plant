@@ -1,16 +1,12 @@
-﻿using System.ComponentModel;
-using Asp.Versioning;
+﻿using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Plant.Versioning;
+namespace Microsoft.Extensions.DependencyInjection;
 
 public sealed class PlantVersioningBuilder
 {
-    [EditorBrowsable(EditorBrowsableState.Never)]
     public IServiceCollection Services { get; }
 
-    [EditorBrowsable(EditorBrowsableState.Never)]
     public IApiVersioningBuilder ApiVersioningBuilder { get; }
 
     public PlantVersioningBuilder(IServiceCollection services, IApiVersioningBuilder apiVersioningBuilder)
@@ -25,9 +21,9 @@ public sealed class PlantVersioningBuilder
         return this;
     }
 
-    public PlantVersioningBuilder AddMvc(Action<MvcApiVersioningOptions> setupAction)
+    public PlantVersioningBuilder AddMvc(Action<MvcApiVersioningOptions> configure)
     {
-        ApiVersioningBuilder.AddMvc(setupAction);
+        ApiVersioningBuilder.AddMvc(configure);
         return this;
     }
 
@@ -47,9 +43,9 @@ public sealed class PlantVersioningBuilder
         return this;
     }
 
-    public PlantVersioningBuilder AddApiExplorer(Action<ApiExplorerOptions> setupAction)
+    public PlantVersioningBuilder AddApiExplorer(Action<ApiExplorerOptions> configure)
     {
-        ApiVersioningBuilder.AddApiExplorer(setupAction);
+        ApiVersioningBuilder.AddApiExplorer(configure);
         return this;
     }
 }

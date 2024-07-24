@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.Extensions.Options;
-using Plant;
-using Plant.Abstractions;
-
-namespace Microsoft.Extensions.DependencyInjection;
+﻿namespace Microsoft.Extensions.DependencyInjection;
 
 public static class PlantExtensions
 {
@@ -23,12 +18,7 @@ public static class PlantExtensions
             builder = new PlantBuilder(services);
             services.AddSingleton(builder);
 
-            // TODO: Небоходимые для библиотеки сервисы
-            //services.AddHttpContextAccessor();
-            //services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
-            services.AddSingleton<PlantExceptionFilterAttribute>();
-            services.AddSingleton<ProblemDetailsFactory, PlantProblemDetailsFactory>();
-            services.AddSingleton<IApplicationService, ApplicationService>();
+            AddDefaultServices(builder);
         }
 
         return builder;
@@ -43,5 +33,10 @@ public static class PlantExtensions
         configure(builder);
 
         return builder;
+    }
+
+    private static void AddDefaultServices(PlantBuilder builder)
+    {
+        builder.Services.AddHttpContextAccessor();
     }
 }

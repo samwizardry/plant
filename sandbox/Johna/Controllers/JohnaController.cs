@@ -1,6 +1,7 @@
-﻿using System.ComponentModel;
-using Asp.Versioning;
+﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
+using Plant.Errors;
+using Plant.Exceptions;
 
 namespace Johna.Controllers;
 
@@ -26,6 +27,29 @@ public class JohnaController : ApiControllerBase
             someDate,
             someTime
         });
+    }
+
+    [HttpGet("error")]
+    public IActionResult GetError()
+    {
+        return Problem(Error.Forbidden());
+    }
+
+    [HttpGet("exception")]
+    public IActionResult GetException()
+    {
+        throw new NotImplementedException("Тестовый exception.");
+    }
+
+    [HttpGet("standard-exception")]
+    public IActionResult GetStandardException()
+    {
+        throw new StandardException(
+            StatusCodes.Status406NotAcceptable,
+            "Standard.Exception",
+            "Тестовый standard exception. Сообщение для разработчика.",
+            "Тестовый standard exception. Сообщение для пользователя.",
+            new NotImplementedException());
     }
 
     private string ConvertRciCat(string? rciCat) => rciCat?.ToUpper() switch
