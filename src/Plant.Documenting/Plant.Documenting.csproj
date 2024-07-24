@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Plant</RootNamespace>
-    <AssemblyName>Plant</AssemblyName>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RootNamespace>Plant.Documenting</RootNamespace>
+    <AssemblyName>Plant.Documenting</AssemblyName>
     <Product>Plant</Product>
     <Description>Development tools for aspnetcore applications</Description>
     <PackageReleaseNotes>First release of the package</PackageReleaseNotes>
@@ -15,7 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Plant.Abstractions\Plant.Abstractions.csproj" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plant.Versioning\Plant.Versioning.csproj" />
   </ItemGroup>
 
   <ItemGroup>

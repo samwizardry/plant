@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Plant</RootNamespace>
-    <AssemblyName>Plant</AssemblyName>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RootNamespace>Plant.Versioning</RootNamespace>
+    <AssemblyName>Plant.Versioning</AssemblyName>
     <Product>Plant</Product>
     <Description>Development tools for aspnetcore applications</Description>
     <PackageReleaseNotes>First release of the package</PackageReleaseNotes>
@@ -12,6 +11,10 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Plant</RootNamespace>
-    <AssemblyName>Plant</AssemblyName>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RootNamespace>Plant.AspNetCore</RootNamespace>
+    <AssemblyName>Plant.AspNetCore</AssemblyName>
     <Product>Plant</Product>
     <Description>Development tools for aspnetcore applications</Description>
     <PackageReleaseNotes>First release of the package</PackageReleaseNotes>

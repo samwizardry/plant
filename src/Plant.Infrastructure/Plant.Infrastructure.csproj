@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Plant</RootNamespace>
-    <AssemblyName>Plant</AssemblyName>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RootNamespace>Plant.Infrastructure</RootNamespace>
+    <AssemblyName>Plant.Infrastructure</AssemblyName>
     <Product>Plant</Product>
     <Description>Development tools for aspnetcore applications</Description>
     <PackageReleaseNotes>First release of the package</PackageReleaseNotes>
@@ -15,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Plant.Abstractions\Plant.Abstractions.csproj" />
+    <ProjectReference Include="..\Plant.Infrastructure.Abstractions\Plant.Infrastructure.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
