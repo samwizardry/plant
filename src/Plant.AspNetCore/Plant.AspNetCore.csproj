@@ -12,8 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Plant\Plant.csproj" />
     <ProjectReference Include="..\Plant.Abstractions\Plant.Abstractions.csproj" />
+    <ProjectReference Include="..\Plant\Plant.csproj" />
+    <ProjectReference Include="..\Plant.Infrastructure.Abstractions\Plant.Infrastructure.Abstractions.csproj" />
     <ProjectReference Include="..\Plant.Infrastructure\Plant.Infrastructure.csproj" />
     <ProjectReference Include="..\Plant.Logging\Plant.Logging.csproj" />
     <ProjectReference Include="..\Plant.Versioning\Plant.Versioning.csproj" />
