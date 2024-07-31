@@ -8,10 +8,10 @@ public class ConfigureProblemDetailsOptions : IConfigureOptions<ProblemDetailsOp
 {
     public void Configure(ProblemDetailsOptions options)
     {
-        options.CustomizeProblemDetails = ctx =>
+        options.CustomizeProblemDetails = context =>
         {
-            var httpContext = ctx.HttpContext;
-            var problemDetails = ctx.ProblemDetails;
+            var httpContext = context.HttpContext;
+            var problemDetails = context.ProblemDetails;
 
             if (httpContext?.Items[PlantConstants.Errors.ProblemDetailsErrors] is object errors)
             {

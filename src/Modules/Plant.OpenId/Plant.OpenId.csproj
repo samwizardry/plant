@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <RootNamespace>Plant.OpenId</RootNamespace>
+    <AssemblyName>Plant.OpenId</AssemblyName>
+    <Description>Development tools for aspnetcore applications.</Description>
+    <PackageTags>$(PackageTags)</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Plant.AspNetCore\Plant.AspNetCore.csproj" />
+  </ItemGroup>
+
+</Project>

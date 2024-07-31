@@ -3,10 +3,8 @@
   <PropertyGroup>
     <RootNamespace>Plant.AspNetCore</RootNamespace>
     <AssemblyName>Plant.AspNetCore</AssemblyName>
-    <Product>Plant</Product>
-    <Description>Development tools for aspnetcore applications</Description>
-    <PackageReleaseNotes>First release of the package</PackageReleaseNotes>
-    <PackageIcon>package-icon.png</PackageIcon>
+    <Description>Plant framework to build ASP.NET Core web applications.</Description>
+    <PackageTags>$(PackageTags);framework</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,14 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Plant.Abstractions\Plant.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\package-icon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+    <ProjectReference Include="..\Plant\Plant.csproj" />
+    <ProjectReference Include="..\Plant.Infrastructure\Plant.Infrastructure.csproj" />
+    <ProjectReference Include="..\Plant.Logging\Plant.Logging.csproj" />
+    <ProjectReference Include="..\Plant.Versioning\Plant.Versioning.csproj" />
+    <ProjectReference Include="..\Plant.Documenting\Plant.Documenting.csproj" />
+    <ProjectReference Include="..\Plant.OpenId.Core\Plant.OpenId.Core.csproj" />
   </ItemGroup>
 
 </Project>
