@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Plant.Abstractions;
 using Plant.Errors;
 
 namespace Plant.AspNetCore;
@@ -9,7 +10,7 @@ public abstract class PlantControllerBase : ControllerBase
     [NonAction]
     protected IActionResult Problem(IEnumerable<Error> errors)
     {
-        HttpContext.Items["errors"] = errors
+        HttpContext.Items[PlantConstants.Errors.ProblemDetailsErrors] = errors
             .GroupBy(p => p.Code)
             .ToDictionary(g => g.Key, g => g.Select(p => p.Description).ToArray());
 
@@ -19,7 +20,7 @@ public abstract class PlantControllerBase : ControllerBase
     [NonAction]
     protected IActionResult Problem(Error error)
     {
-        HttpContext.Items["errors"] = new Dictionary<string, string[]>
+        HttpContext.Items[PlantConstants.Errors.ProblemDetailsErrors] = new Dictionary<string, string[]>
         {
             { error.Code, new string[] { error.Description } }
         };
