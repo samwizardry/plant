@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Plant.AspNetCore;
 
 namespace Johna.Controllers;
 
-public class HomeController : Controller
+public class HomeController : PlantController
 {
     public IActionResult Index()
     {

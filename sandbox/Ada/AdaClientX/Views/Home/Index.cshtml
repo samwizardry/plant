@@ -16,13 +16,13 @@
         <h3>Message received from the resource controller: @Model</h3>
     }
 
-    <a asp-controller="@AccountController.ControllerName" asp-action="Index" class="btn btn-link">Profile</a>
+    <a asp-controller="@AccountController.ControllerName" asp-action="Index">Profile</a>
 
     <form asp-controller="@AuthenticationController.ControllerName"
           asp-action="@AuthenticationController.SsoLogoutActionName"
           asp-route-provider="@AuthenticationController.SsoLoginLocalProvider"
           method="post">
-        <button class="btn btn-primary" type="submit">Sign out</button>
+        <button type="submit">Sign out</button>
     </form>
 }
 else
@@ -31,6 +31,5 @@ else
 
     <a asp-controller="@AuthenticationController.ControllerName"
        asp-action="@AuthenticationController.SsoLoginActionName"
-       asp-route-provider="@AuthenticationController.SsoLoginLocalProvider"
-       class="btn btn-primary">Sign in</a>
+       asp-route-provider="@AuthenticationController.SsoLoginLocalProvider">Sign in</a>
 }

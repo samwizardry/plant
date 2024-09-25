@@ -1,5 +1,4 @@
 using AdaIdp;
-using AdaIdp.Controllers;
 using AdaIdp.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -32,14 +31,14 @@ builder.Services.ConfigureOptions<ConfigureProblemDetailsOptions>();
 
 #endregion
 
-#region authentication
+#region Authentication
 
 builder.Services
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = new PathString($"{AuthenticationController.ControllerRouteTemplate}/{AuthenticationController.LoginRouteTemplate}");
-        options.LogoutPath = new PathString($"{AuthenticationController.ControllerRouteTemplate}/{AuthenticationController.LogoutRouteTemplate}");
+        options.LoginPath = new PathString("/auth/login");
+        options.LogoutPath = new PathString("/auth/logout");
         options.ReturnUrlParameter = RazorConstants.ViewData.RedirectUri;
     });
 
@@ -152,7 +151,7 @@ app.UseVersionedSwaggerUI();
 
 app.UseStaticFiles();
 
-app.UseSerilogRequestLogging();
+app.UsePlantSerilogRequestLogging();
 
 app.UseRouting();
 

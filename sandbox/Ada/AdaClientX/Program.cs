@@ -32,7 +32,7 @@ builder.Services.ConfigureOptions<ConfigureProblemDetailsOptions>();
 
 #endregion
 
-#region authentication
+#region Authentication
 
 builder.Services
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -133,7 +133,7 @@ app.UseVersionedSwaggerUI();
 
 app.UseStaticFiles();
 
-app.UseSerilogRequestLogging();
+app.UsePlantSerilogRequestLogging();
 
 app.UseRouting();
 

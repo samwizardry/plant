@@ -13,9 +13,7 @@
 <body dir="ltr" class="@(ViewData[RazorConstants.ViewData.BodyClass]?.ToString() ?? "")">
 
     <main role="main" class="@(ViewData[RazorConstants.ViewData.MainClass]?.ToString() ?? "")">
-        <section class="container-fluid">
-            @RenderBody()
-        </section>
+        @RenderBody()
     </main>
 
     @await RenderSectionAsync("scripts", false)

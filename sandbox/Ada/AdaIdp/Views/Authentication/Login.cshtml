@@ -3,24 +3,16 @@
 <form
     asp-controller="@AuthenticationController.ControllerName"
     asp-action="@AuthenticationController.LoginActionName"
-    asp-route-redirectUri="@ViewData[RazorConstants.ViewData.RedirectUri]"
-    class="form-signin">
-    <div class="form-group mb-3">
+    asp-route-redirectUri="@ViewData[RazorConstants.ViewData.RedirectUri]">
+    <div>
         <label asp-for="Email">Email address</label>
-        <input type="email" class="form-control" asp-for="Email" aria-describedby="emailHelp" placeholder="Enter email" tabindex="1">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="email" asp-for="Email" placeholder="Enter email" tabindex="1">
     </div>
-    <div class="form-group mb-3">
+    <div>
         <label asp-for="Password">Password</label>
-        <input type="password" class="form-control" asp-for="Password" placeholder="Password" tabindex="2">
+        <input type="password" asp-for="Password" placeholder="Password" tabindex="2">
     </div>
-    <button type="submit" class="btn btn-primary" tabindex="3">Submit</button>
+    <div>
+        <button type="submit" tabindex="3">Submit</button>
+    </div>
 </form>
-
-@section styles {
-    <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
-}
-
-@section scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

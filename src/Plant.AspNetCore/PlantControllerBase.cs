@@ -14,7 +14,7 @@ public abstract class PlantControllerBase : ControllerBase
             .GroupBy(p => p.Code)
             .ToDictionary(g => g.Key, g => g.Select(p => p.Description).ToArray());
 
-        return Problem(statusCode: errors.First().StatusCode);
+        return Problem(statusCode: errors.OrderByDescending(e => e.StatusCode).First().StatusCode);
     }
 
     [NonAction]

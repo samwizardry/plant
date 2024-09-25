@@ -21,21 +21,17 @@ public class User
     public List<string> Roles { get; set; } = null!;
 }
 
-[Route(ControllerRouteTemplate, Name = ControllerRouteName)]
 [ControllerName(ControllerName)]
-public class AuthenticationController : Controller
+[Route("~/auth", Name = ControllerName)]
+public class AuthenticationController : PlantController
 {
-    public const string ControllerName = "authentication";
-    public const string ControllerRouteTemplate = "~/auth";
-    public const string ControllerRouteName = "authentication";
+    public const string ControllerName = "Authentication";
 
-    public const string LoginActionName = "login";
-    public const string LoginRouteTemplate = "login";
-    public const string LoginRouteName = "login";
+    public const string LoginActionName = "Login";
+    public const string LogoutActionName = "Logout";
 
-    public const string LogoutActionName = "logout";
-    public const string LogoutRouteTemplate = "logout";
-    public const string LogoutRouteName = "logout";
+    public const string LoginRouteName = $"{ControllerName}_{LoginActionName}";
+    public const string LogoutRouteName = $"{ControllerName}_{LogoutActionName}";
 
     private readonly List<User> _users = new()
     {
@@ -57,9 +53,8 @@ public class AuthenticationController : Controller
         },
     };
 
-    [HttpGet]
-    [Route(LoginRouteTemplate, Name = LoginRouteName)]
     [ActionName(LoginActionName)]
+    [HttpGet("login", Name = LoginRouteName)]
     public IActionResult Login([FromQuery] string? redirectUri)
     {
         if (User.Identity is { IsAuthenticated: true })
@@ -71,9 +66,8 @@ public class AuthenticationController : Controller
         return View(new SignInViewModel());
     }
 
-    [HttpPost]
-    [Route(LoginRouteTemplate, Name = LoginRouteName)]
     [ActionName(LoginActionName)]
+    [HttpPost("login", Name = LoginRouteName)]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login([FromForm] SignInViewModel model, [FromQuery] string? redirectUri)
     {
@@ -94,9 +88,8 @@ public class AuthenticationController : Controller
         return Url.IsLocalUrl(redirectUri) ? LocalRedirect(redirectUri) : LocalRedirect("~/");
     }
 
-    [HttpPost]
-    [Route(LogoutRouteTemplate, Name = LogoutRouteName)]
     [ActionName(LogoutActionName)]
+    [HttpPost("logout", Name = LogoutRouteName)]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
     {
