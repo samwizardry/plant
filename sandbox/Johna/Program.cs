@@ -1,4 +1,3 @@
-using Johna.Controllers;
 using Plant.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,12 +27,8 @@ builder.Services
     .AddAuthentication()
     .AddCookie(options =>
     {
-        string loginPath = AuthenticationController.ControllerRouteTemplate + "/" + AuthenticationController.LoginRouteTemplate;
-        options.LoginPath = loginPath.StartsWith("~") ? new PathString(loginPath.Substring(1)) : new PathString(loginPath);
-
-        string logoutPath = AuthenticationController.ControllerRouteTemplate + "/" + AuthenticationController.LogoutRouteTemplate;
-        options.LogoutPath = logoutPath.StartsWith("~") ? new PathString(logoutPath.Substring(1)) : new PathString(logoutPath);
-
+        options.LoginPath = "/auth/login";
+        options.LogoutPath = "/auth/logout";
         options.ReturnUrlParameter = RazorConstants.ViewData.RedirectUri;
     });
 
@@ -49,7 +44,7 @@ app.UseVersionedSwaggerUI();
 
 app.UseStaticFiles();
 
-app.UseSerilogRequestLogging();
+app.UsePlantSerilogRequestLogging();
 
 app.UseRouting();
 

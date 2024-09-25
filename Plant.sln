@@ -24,6 +24,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plant.Versioning", "src\Plant.Versioning\Plant.Versioning.csproj", "{1DE1A94A-4A87-4B8D-AD3F-D4619D20E3B6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sandbox", "sandbox", "{E26041AB-E0EA-4844-8208-29B41FE721E1}"
+	ProjectSection(SolutionItems) = preProject
+		sandbox\Directory.Build.props = sandbox\Directory.Build.props
+		sandbox\Directory.Packages.props = sandbox\Directory.Packages.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ada", "Ada", "{2D6A8339-8D5A-41B9-A119-296B52FB8198}"
 EndProject
