@@ -1,0 +1,16 @@
+<!-- For more info on central package management go to https://devblogs.microsoft.com/nuget/introducing-central-package-management/ -->
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup Label="Package versions for .NET 8.0" Condition=" '$(TargetFrameworkIdentifier)' == '.NETCoreApp' And $([MSBuild]::VersionEquals($(TargetFrameworkVersion), '8.0')) ">
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.7" />
+    <PackageVersion Include="OpenIddict.AspNetCore" Version="5.7.0" />
+    <PackageVersion Include="OpenIddict.EntityFrameworkCore" Version="5.7.0" />
+    <PackageVersion Include="OpenIddict.Quartz" Version="5.7.0" />
+    <PackageVersion Include="Quartz.Extensions.Hosting" Version="3.11.0" />
+    <PackageVersion Include="System.Linq.Async" Version="6.0.1" />
+  </ItemGroup>
+</Project>

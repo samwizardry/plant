@@ -40,7 +40,7 @@ public class StandardExceptionFilterAttribute : ExceptionFilterAttribute
         }
         else
         {
-            _logger.LogCritical(context.Exception, PlantConstants.Errors.ExceptionOccurred);
+            _logger.LogError(context.Exception, PlantConstants.Errors.ExceptionOccurred);
 
             problemDetails = _problemDetailsFactory.CreateProblemDetails(
                 context.HttpContext,

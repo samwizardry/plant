@@ -4,9 +4,11 @@ namespace Microsoft.Extensions.Hosting;
 
 public static partial class HostBuilderExtensions
 {
-    public static IHostBuilder UseSerilogHost(this IHostBuilder builder)
+    public static IHostBuilder UseSerilogHost(this IHostBuilder host)
     {
-        return builder.UseSerilog((context, services, configuration) =>
+        ArgumentNullException.ThrowIfNull(host);
+
+        return host.UseSerilog((context, services, configuration) =>
         {
             configuration.ReadFrom.Configuration(context.Configuration);
         });

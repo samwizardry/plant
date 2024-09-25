@@ -7,6 +7,8 @@ public static partial class ApplicationBuilderExtensions
 {
     public static IApplicationBuilder UseVersionedSwaggerUI(this IApplicationBuilder app)
     {
+        ArgumentNullException.ThrowIfNull(app);
+
         app.UseSwaggerUI(options =>
         {
             var apiVersionDescriptionProvider = app.ApplicationServices.GetRequiredService<IApiVersionDescriptionProvider>();

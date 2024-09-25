@@ -21,9 +21,10 @@ public sealed class PlantVersioningBuilder
         return this;
     }
 
-    public PlantVersioningBuilder AddMvc(Action<MvcApiVersioningOptions> configure)
+    public PlantVersioningBuilder AddMvc(Action<MvcApiVersioningOptions> setupAction)
     {
-        ApiVersioningBuilder.AddMvc(configure);
+        ArgumentNullException.ThrowIfNull(setupAction);
+        ApiVersioningBuilder.AddMvc(setupAction);
         return this;
     }
 
@@ -43,9 +44,10 @@ public sealed class PlantVersioningBuilder
         return this;
     }
 
-    public PlantVersioningBuilder AddApiExplorer(Action<ApiExplorerOptions> configure)
+    public PlantVersioningBuilder AddApiExplorer(Action<ApiExplorerOptions> setupAction)
     {
-        ApiVersioningBuilder.AddApiExplorer(configure);
+        ArgumentNullException.ThrowIfNull(setupAction);
+        ApiVersioningBuilder.AddApiExplorer(setupAction);
         return this;
     }
 }

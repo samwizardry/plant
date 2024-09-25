@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Plant.OpenId.Core</RootNamespace>
+    <AssemblyName>Plant.OpenId.Core</AssemblyName>
+    <Description>Development tools for aspnetcore applications.</Description>
+    <PackageTags>$(PackageTags);openid</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenIddict.AspNetCore" />
+  </ItemGroup>
+
+</Project>

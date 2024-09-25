@@ -9,13 +9,24 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Sam's Wizardry</Authors>
     <Company>$(Authors)</Company>
+    <Product>Plant</Product>
+    <PackageTags>plant;aspnetcore;web;application</PackageTags>
+    <PackageIcon>package-icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/samwizardry/plant</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>samwizardry;plant;dotnet;aspnetcore;web;application</PackageTags>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/samwizardry/plant.git</RepositoryUrl>
+    <PackageReleaseNotes>First release of the package</PackageReleaseNotes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\package-icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

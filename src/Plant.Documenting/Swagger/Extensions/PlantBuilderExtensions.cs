@@ -4,15 +4,15 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static partial class PlantBuilderExtensions
 {
-    public static PlantSwaggerBuilder AddSwagger(this PlantBuilder builder)
+    public static PlantSwaggerBuilder AddSwagger(this PlantBuilder plant)
     {
-        ArgumentNullException.ThrowIfNull(builder);
+        ArgumentNullException.ThrowIfNull(plant);
 
-        builder.Services.AddSwaggerGen(options =>
+        plant.Services.AddSwaggerGen(options =>
         {
             options.OperationFilter<SwaggerDefaultValues>();
         }).AddSwaggerGenNewtonsoftSupport();
 
-        return new PlantSwaggerBuilder(builder.Services);
+        return new PlantSwaggerBuilder(plant.Services);
     }
 }

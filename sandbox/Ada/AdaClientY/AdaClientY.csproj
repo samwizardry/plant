@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Plant.AspNetCore\Plant.AspNetCore.csproj" />
+  </ItemGroup>
+
+</Project>

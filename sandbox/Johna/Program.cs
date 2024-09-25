@@ -1,8 +1,9 @@
+using Johna.Controllers;
 using Plant.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 
 builder.Host.UseSerilogHost();
 
@@ -20,9 +21,21 @@ builder.Services.AddPlant(plant =>
 });
 
 builder.Services.AddSingleton<StandardExceptionFilterAttribute>();
-builder.Services.AddProblemDetails(ProblemDetailsHelper.ConfigureProblemDetailsOptions);
+builder.Services.AddProblemDetails();
+builder.Services.ConfigureOptions<ConfigureProblemDetailsOptions>();
 
-builder.Services.AddAuthentication();
+builder.Services
+    .AddAuthentication()
+    .AddCookie(options =>
+    {
+        string loginPath = AuthenticationController.ControllerRouteTemplate + "/" + AuthenticationController.LoginRouteTemplate;
+        options.LoginPath = loginPath.StartsWith("~") ? new PathString(loginPath.Substring(1)) : new PathString(loginPath);
+
+        string logoutPath = AuthenticationController.ControllerRouteTemplate + "/" + AuthenticationController.LogoutRouteTemplate;
+        options.LogoutPath = logoutPath.StartsWith("~") ? new PathString(logoutPath.Substring(1)) : new PathString(logoutPath);
+
+        options.ReturnUrlParameter = RazorConstants.ViewData.RedirectUri;
+    });
 
 var app = builder.Build();
 
@@ -33,12 +46,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseSwagger();
 app.UseVersionedSwaggerUI();
-app.UsePlantSerilogRequestLogging();
+
+app.UseStaticFiles();
+
+app.UseSerilogRequestLogging();
+
+app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseRouting();
 app.MapControllers();
+app.MapDefaultControllerRoute();
 
 app.Run();

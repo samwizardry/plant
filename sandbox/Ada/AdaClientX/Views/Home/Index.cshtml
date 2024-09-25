@@ -1,0 +1,36 @@
+﻿@using System.Security.Claims
+
+@if (User?.Identity is { IsAuthenticated: true })
+{
+    <h1>Welcome, @User.Identity.Name</h1>
+
+    <p>
+        @foreach (var claim in Context.User.Claims)
+        {
+            <div>@claim.Type: <b>@claim.Value</b></div>
+        }
+    </p>
+
+    if (!string.IsNullOrEmpty(Model))
+    {
+        <h3>Message received from the resource controller: @Model</h3>
+    }
+
+    <a asp-controller="@AccountController.ControllerName" asp-action="Index" class="btn btn-link">Profile</a>
+
+    <form asp-controller="@AuthenticationController.ControllerName"
+          asp-action="@AuthenticationController.SsoLogoutActionName"
+          asp-route-provider="@AuthenticationController.SsoLoginLocalProvider"
+          method="post">
+        <button class="btn btn-primary" type="submit">Sign out</button>
+    </form>
+}
+else
+{
+    <h1>Welcome, anonymous</h1>
+
+    <a asp-controller="@AuthenticationController.ControllerName"
+       asp-action="@AuthenticationController.SsoLoginActionName"
+       asp-route-provider="@AuthenticationController.SsoLoginLocalProvider"
+       class="btn btn-primary">Sign in</a>
+}
