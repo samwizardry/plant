@@ -2,7 +2,7 @@
 
 @if (User?.Identity is { IsAuthenticated: true })
 {
-    <h1>Welcome, @User.Identity.Name</h1>
+    <h2>Welcome, @User.Identity.Name</h2>
 
     <p>
         @foreach (var claim in Context.User.Claims)
@@ -26,7 +26,7 @@
 }
 else
 {
-    <h1>Welcome, anonymous</h1>
+    <h2>Welcome, anonymous</h1>
 
     <a asp-controller="@AuthenticationController.ControllerName"
        asp-action="@AuthenticationController.LoginActionName">Sign in</a>

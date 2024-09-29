@@ -1,5 +1,6 @@
 using AdaIdp;
 using AdaIdp.Data;
+using AdaIdp.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Plant.AspNetCore;
@@ -136,6 +137,9 @@ builder.Services.AddQuartzHostedService(options => options.WaitForJobsToComplete
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHostedService<Worker>();
+
+builder.Services.AddScoped<OpenIddictApplicationManagementService>();
+builder.Services.AddScoped<OpenIddictScopeManagementService>();
 
 #endregion
 
